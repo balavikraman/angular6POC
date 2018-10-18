@@ -1,0 +1,92 @@
+<div class="container">
+    <h1>Customer Creation Form</h1>
+    <form #custCreationForm="ngForm" (ngSubmit)="createCust(custCreationForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="cusName" [(ngModel)]="custName" #custNamecont="ngModel" class="form-control" id="name" required>
+      </div>
+      <table class="table">
+            <tr>
+              <td><h4>Field validation</h4></td>
+            </tr>
+            <tr>
+                <td><div >touched: {{custNamecont.touched}}</div>
+                  <div >Untouched: {{custNamecont.untouched}}</div></td>
+                <td><div >Dirty: {{custNamecont.dirty}}</div>
+                    <div >Pristine: {{custNamecont.pristine}}</div></td>
+                <td><div >Valid: {{custNamecont.valid}}</div>
+                      <div >Invalid: {{custNamecont.invalid}}</div></td>
+              </tr>
+        </table>
+     
+      <div class="form-group">
+        <label for="alterEgo">Email</label>
+        <input type="text" name="cusEmail" #custEmailcont="ngModel" [(ngModel)]="custEmail"  class="form-control" id="alterEgo">
+      </div>
+      <table class="table">
+          <tr>
+            <td><h4>Field validation</h4></td>
+          </tr>
+          <tr>
+              <td><div >touched: {{custEmailcont.touched}}</div>
+                <div >Untouched: {{custEmailcont.untouched}}</div></td>
+              <td><div >Dirty: {{custEmailcont.dirty}}</div>
+                  <div >Pristine: {{custEmailcont.pristine}}</div></td>
+              <td><div >Valid: {{custEmailcont.valid}}</div>
+                    <div >Invalid: {{custEmailcont.invalid}}</div></td>
+            </tr>
+      </table>
+      <div class="form-group">
+          <label for="gender">Gender</label>
+          <div class="form-control">
+<label class="radio-inline">
+    <input type="radio" name="cusGender" value="male" [(ngModel)]="custGender"  id="gender" checked>
+Male
+</label>
+<label class="radio-inline">
+    <input type="radio" name="cusGender"  value="female" [(ngModel)]="custGender" id="gender">
+Female
+</label>
+              
+          </div>
+        
+        </div>
+      <div class="form-group">
+        <label for="power">DOB</label>
+        <input type="text" name="cusDOB"
+        bsDatepicker [bsConfig]="BsDatepickerConfig"
+        [(ngModel)]="custDOB" class="form-control" id="alterEgo">
+      </div>
+      <div class="form-group">
+          <label for="power">Customer Type</label>
+          <select id=custype name=custType [(ngModel)]="custType" class="form-control">
+            <option *ngFor="let type of custypeLOV" [value]="type.id">{{type.name}}</option>
+            
+          </select>
+        </div>
+      <div class="form-group">
+          <label for="gender">Is Active</label>
+          <div class="form-control">
+<label class="radio-inline">
+    <input type="checkbox" name="cusStatus" [(ngModel)]="custStatus"  id="status" >
+</label>
+ </div>
+        
+        </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+      Form Value:{{custCreationForm.value| json}}
+      <table class="table">
+          <tr>
+            <td><h4>Form validation</h4></td>
+          </tr>
+          <tr>
+              <td><div >touched: {{custCreationForm.touched}}</div>
+                <div >Untouched: {{custCreationForm.untouched}}</div></td>
+              <td><div >Dirty: {{custCreationForm.dirty}}</div>
+                  <div >Pristine: {{custCreationForm.pristine}}</div></td>
+              <td><div >Valid: {{custCreationForm.valid}}</div>
+                    <div >Invalid: {{custCreationForm.invalid}}</div></td>
+            </tr>
+      </table>
+    </form>
+</div>

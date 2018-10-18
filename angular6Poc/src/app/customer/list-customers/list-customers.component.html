@@ -1,0 +1,20 @@
+
+  <section>
+      <div class="container">
+        <div class="row">
+            <div class="card" style="width:25%" *ngFor="let cust of customer">
+                <img class="card-img-top"  [src]="cust.CusPhotopath" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title">{{cust.CusName}}</h4>
+                  <p class="card-text">DOB:{{cust.CusDob | date}}</p>
+                  <p class="card-text">Status:{{cust.CusStatus}}</p>
+                  <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+              </div>
+
+        </div>
+        
+          
+      </div> 
+  </section>
+
