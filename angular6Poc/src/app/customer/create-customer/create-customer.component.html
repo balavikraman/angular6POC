@@ -1,9 +1,13 @@
 <div class="container">
     <h1>Customer Creation Form</h1>
     <form #custCreationForm="ngForm" (ngSubmit)="createCust(custCreationForm)">
-      <div class="form-group">
+      <div class="form-group" [class.has-error]="custNamecont.invalid">
         <label for="name">Name</label>
         <input type="text" name="cusName" [(ngModel)]="custName" #custNamecont="ngModel" class="form-control" id="name" required>
+      <span class="help-block" *ngIf="custNamecont.invalid && custNamecont.touched">
+        Name is Required 
+
+      </span>
       </div>
       <table class="table">
             <tr>
