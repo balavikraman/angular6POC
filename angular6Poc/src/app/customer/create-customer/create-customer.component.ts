@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Customer} from  'src/app/models/customer.model'
-import{CustTypeLOV} from  'src/app/models/customer.model'
-import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker'
+import {Customer} from  'src/app/models/customer.model';
+import{CustTypeLOV} from  'src/app/models/customer.model';
+import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
+import {CustomerService} from 'src/app/services/customer.service';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-create-customer',
   templateUrl: './create-customer.component.html',
@@ -26,7 +28,7 @@ export class CreateCustomerComponent implements OnInit {
     CusDob:null,
     CusStatus:null}
   ]
-  constructor() { 
+  constructor(private _customerListSer :CustomerService,private _router:Router) { 
     this.BsDatepickerConfig=Object.assign({},{containerClass:'theme-green',
     showWeekNumbers:false,
     minDate:new Date(1990,0,1),
@@ -39,6 +41,8 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit() {
   }
   createCust(custForm:NgForm):void{
-    console.log(custForm);
+    this._customerListSer.saveCustomer(custForm.value);
+    this._router.navigate(['list']);
+    console.log(custForm.value);
   }
 }

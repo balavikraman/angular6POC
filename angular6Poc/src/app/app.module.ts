@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ListCustomersComponent } from './customer/list-customers/list-customers.component';
 import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {CustomerService} from './services/customer.service'
 
 const appRoutes: Routes=[
   {
@@ -26,7 +27,7 @@ const appRoutes: Routes=[
     BsDatepickerModule.forRoot(),
     
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
